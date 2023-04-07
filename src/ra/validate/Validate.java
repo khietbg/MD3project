@@ -30,6 +30,6 @@ public class Validate {
     }
 
 //    public static void main(String[] args) {
-//        System.out.println(checkPhoneNumber("0900008000"));
+//        System.out.println(checkUserName(""));
 //    }
 }

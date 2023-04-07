@@ -1,5 +1,7 @@
 package ra.view;
 
+import com.sun.org.apache.xpath.internal.operations.Neg;
+
 import java.sql.SQLOutput;
 
 import static ra.config.Config.scanner;
@@ -86,8 +88,11 @@ public class Main {
                     new ProductView().ShowProduct();
                     break;
                 case 2:
+                    new CartView().addToCart();
                     break;
                 case 3:
+                    new CartView().showCart();
+                    showMyCart();
                     break;
                 case 4:
                     new UserView().updateUser();
@@ -99,6 +104,39 @@ public class Main {
                 default:
                     break;
 
+            }
+        }
+    }
+    public static void showMyCart(){
+        System.out.println("===============YOUR CART====================");
+        boolean check = true;
+        while (check){
+            System.out.println("1. Buy");
+            System.out.println("2. Update Cart");
+            System.out.println("3. Delete Cart Item");
+            System.out.println("4. Delete All Item");
+            System.out.println("5. Exit");
+            int choice = Integer.parseInt(scanner.nextLine());
+            switch (choice){
+                case 1:
+                    new InvoiceView().createInvoice();
+                    new InvoiceView().showInvoiceMenu();
+                    break;
+                case 2:
+                    new CartView().updateCart();
+                    break;
+                case 3:
+                    new CartView().deleteItem();
+                    break;
+                case 4:
+                    new CartView().deleteAllCart();
+                    break;
+                case 5:
+                    check = false;
+                    break;
+                default:
+                    System.err.println("Incorrect, please re-enter");
+                    break;
             }
         }
     }

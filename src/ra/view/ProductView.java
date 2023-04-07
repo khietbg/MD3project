@@ -14,7 +14,8 @@ public class ProductView {
     List<Product> productList = productController.findAll();
     public void ShowProduct(){
         for (Product product:productList) {
-            System.out.println(product);
+            System.out.printf("Product ID: %d,  " +
+                    "Product Name: %s,  "+"Price: %.1f\n",product.getProductId(),product.getProductName(),product.getProductPrice());
         }
     }
     public void createProduct(){
