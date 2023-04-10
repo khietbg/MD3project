@@ -4,6 +4,7 @@ import ra.controller.user.IUserController;
 import ra.dto.request.SignInDTO;
 import ra.dto.request.SignUpDTO;
 import ra.dto.response.ResponseMassage;
+import ra.model.entity.Invoice;
 import ra.model.entity.Role;
 import ra.model.entity.RoleName;
 import ra.model.entity.User;

@@ -109,13 +109,15 @@ public class UserView {
         }
     }
     public void showListUser(){
+
         for (User user:userList) {
-            System.out.println(user);
+            System.out.println(" --- ID ----- name ----- address ---- phone ------ status -----");
+            System.out.println("    "+user.getUserId()+"      "+user.getUserName()+"     "+user.getAddress()+"      "+user.getPhone()+"      "+user.getStatus());
         }
     }
     public void formLogin(){
-        System.out.println("=============LOGIN==============");
         while (true){
+        System.out.println("=============LOGIN==============");
             SignInDTO sign = new SignInDTO();
             System.out.print("Enter the user name: ");
             sign.setUserName(scanner.nextLine());

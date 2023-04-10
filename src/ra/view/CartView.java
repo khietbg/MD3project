@@ -15,34 +15,56 @@ public class CartView {
     User userLogin = new UserView().getUserLogin();
 
     public void showCart() {
-        float total = 0;
-        for (CartItem cartItem : cartController.getListCart()) {
-            System.out.printf("Product ID: %d \n" +
-                    "Product Catalog: %s \n"+
-                    "Product Name: %s\n" +
-                    "Price: %.1f \n" +
-                    "Quantity: %d \n" ,cartItem.getProduct().getProductId(),cartItem.getProduct().getProductCatalog().getName(), cartItem.getProduct().getProductName(), cartItem.getProduct().getProductPrice(), cartItem.getQuantity());
-            total += cartItem.getProduct().getProductPrice() * cartItem.getQuantity();
-            System.out.println("---------------------------------------");
+        if (cartController.getListCart().size()!=0){
+            float total = 0;
+            for (CartItem cartItem : cartController.getListCart()) {
+                System.out.printf("Product ID: %d \n" +
+                        "Product Catalog: %s \n"+
+                        "Product Name: %s\n" +
+                        "Price: %.1f \n" +
+                        "Quantity: %d \n" ,cartItem.getProduct().getProductId(),cartItem.getProduct().getProductCatalog().getName(), cartItem.getProduct().getProductName(), cartItem.getProduct().getProductPrice(), cartItem.getQuantity());
+                total += cartItem.getProduct().getProductPrice() * cartItem.getQuantity();
+                System.out.println("---------------------------------------");
+            }
+            System.out.println();
+            System.out.println("total: " + total + " $\n");
+        }else {
+            System.err.println("Cart is empty, please add to cart");
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            new UserView().proFileView();
         }
-        System.out.println();
-        System.out.println("total: " + total + " $\n");
+
     }
 
     public void addToCart() {
-        new ProductView().ShowProduct();
-        System.out.println("Enter product id");
-        int id = Integer.parseInt(scanner.nextLine());
-        Product product = productController.findById(id);
-        if (product != null) {
-            System.out.println("Enter the quantity:");
-            int quantity = Integer.parseInt(scanner.nextLine());
-            cartController.addToCart(new CartItem(product, quantity));
-            System.out.println("add to cart success");
-        } else {
-            System.err.println(" id not found:");
-            addToCart();
+        if (userLogin.getPhone()!=null&&userLogin.getAddress()!=null){
+            new ProductView().ShowProduct();
+            System.out.println("Enter product id");
+            int id = Integer.parseInt(scanner.nextLine());
+            Product product = productController.findById(id);
+            if (product != null) {
+                System.out.println("Enter the quantity:");
+                int quantity = Integer.parseInt(scanner.nextLine());
+                cartController.addToCart(new CartItem(product, quantity));
+                System.out.println("add to cart success");
+            } else {
+                System.err.println(" id not found:");
+                addToCart();
+            }
+        }else {
+            System.err.println("Please update your account to buy!");
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            new UserView().proFileView();
         }
+
     }
 
     public void deleteItem() {

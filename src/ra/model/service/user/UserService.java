@@ -103,7 +103,7 @@ public class UserService implements IUserService {
     public void updateUserLogin(User user) {
        List<User> users = new Config<User>().readFromFile(Config.PATH_CURRENT_ACCOUNT);
        users.set(0,user);
-        new Config<User>().writeToFile(Config.PATH_CURRENT_ACCOUNT,users);
+       new Config<User>().writeToFile(Config.PATH_CURRENT_ACCOUNT,users);
     }
 
     @Override

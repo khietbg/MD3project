@@ -35,7 +35,6 @@ public class Main {
                     break;
             }
         }
-
     }
 
     public static void generalManager() {
@@ -45,7 +44,7 @@ public class Main {
             System.out.println("1. Product Management");
             System.out.println("2. Catalog Management");
             System.out.println("3. User Management");
-            System.out.println("4. Cart Management");
+            System.out.println("4. Invoice Management");
             System.out.println("5. Exit");
             int choice = Integer.parseInt(scanner.nextLine());
             switch (choice) {
@@ -56,8 +55,10 @@ public class Main {
                     CatalogView.catalogManager();
                     break;
                 case 3:
+                    new UserView().showListUser();
                     break;
                 case 4:
+                    new InvoiceView().invoiceManagement();
                     break;
                 case 5:
                     new UserView().logOut();
@@ -81,7 +82,8 @@ public class Main {
             System.out.println("2. Add To Cart");
             System.out.println("3. Show your Cart");
             System.out.println("4. Update user");
-            System.out.println("5. LogOut");
+            System.out.println("5. Show Invoice History");
+            System.out.println("6. LogOut");
             int choice = Integer.parseInt(scanner.nextLine());
             switch (choice) {
                 case 1:
@@ -98,6 +100,9 @@ public class Main {
                     new UserView().updateUser();
                     break;
                 case 5:
+                      new InvoiceView().showInvoiceHistory();
+                      break;
+                case 6:
                     System.out.println("------Goodbye See you again !---------");
                     new UserView().logOut();
                     check = false;

@@ -13,6 +13,7 @@ public class Config<T> {
     public static final String PATH_USER = "/Users/minhkhiet/javaMD3DINHVANKHIET/MD3project/src/ra/dataBase/User.txt";
     public static final String PATH_CURRENT_ACCOUNT = "/Users/minhkhiet/javaMD3DINHVANKHIET/MD3project/src/ra/dataBase/currentAccount.txt";
     public static final String PATH_INVOICE = "/Users/minhkhiet/javaMD3DINHVANKHIET/MD3project/src/ra/dataBase/invoice.txt";
+    public static final String PATH_INVOICE_HISTORY = "/Users/minhkhiet/javaMD3DINHVANKHIET/MD3project/src/ra/dataBase/invoiceHistory.txt";
     public List<T> readFromFile(String pathFile) {
         List<T> tList = new ArrayList<>();
         try {
